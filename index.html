@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ACS Student Chapter, JUST</title>
+<meta name="description" content="American Chemical Society Student Chapter at Jashore University of Science and Technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F7F6;--surface:#fff;--ink:#12283C;--muted:#4D6272;--line:#C9DAD8;--teal:#0B7C7C;--teal-ink:#fff;--pink:#C2255C;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0E1C27;--surface:#15293A;--ink:#E8F1F0;--muted:#A3B8C2;--line:#27414F;--teal:#4FC3C0;--teal-ink:#0E1C27;--pink:#F06595;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;text-decoration:none;display:flex;align-items:center;gap:10px}
+.tile{display:inline-grid;place-items:center;width:36px;height:36px;border:2px solid var(--ink);border-radius:4px;font-weight:800;font-size:.9rem}
+nav a{margin-right:16px;text-decoration:none;font-weight:500;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--teal);color:var(--teal-ink);font-weight:600;padding:12px 22px;border-radius:6px;text-decoration:none;border:2px solid var(--teal);font-size:1rem}
+.btn.alt{background:transparent;color:inherit;border-color:currentColor}
+/* hero */
+.hero{position:relative;min-height:78vh;display:grid;align-items:end;color:#fff;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s}
+.slide.on{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,18,28,.85),rgba(6,18,28,.2) 70%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:56px;padding-top:80px;width:100%}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.02em;max-width:12ch}
+.hero p{font-size:1.2rem;max-width:36ch;margin:18px 0 26px;color:#E8F1F0}
+.hero .btn.alt{margin-left:8px}
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+.intro{color:var(--muted);max-width:62ch;margin:0 0 32px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:34px}
+.stat{border-left:4px solid var(--pink);padding-left:16px}
+.stat b{display:block;font:800 2.6rem/1 "Bricolage Grotesque",sans-serif}
+.stat span{color:var(--muted);font-size:.95rem}
+/* expanding event panels */
+.panels{display:flex;gap:10px;height:440px}
+.panel{position:relative;flex:1;border-radius:10px;overflow:hidden;background-size:cover;background-position:center;color:#fff;cursor:pointer;transition:flex .5s;display:flex;align-items:flex-end;min-width:0}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,18,28,.9),rgba(6,18,28,.1) 70%)}
+.panel:hover,.panel:focus-visible,.panel.open{flex:4}
+.panel .in{position:relative;z-index:2;padding:18px;width:100%}
+.panel h3{font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.panel .more{display:none;font-size:.93rem;margin-top:8px;max-width:38ch;white-space:normal}
+.panel:hover .more,.panel:focus-visible .more,.panel.open .more{display:block}
+.panel:hover h3,.panel.open h3,.panel:focus-visible h3{white-space:normal}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h3{font-size:1.1rem;margin-bottom:4px}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--teal) center/cover;color:var(--teal-ink);display:grid;place-items:center;font:800 1.4rem "Bricolage Grotesque",sans-serif;margin-bottom:12px}
+select{font:inherit;padding:10px 14px;border-radius:6px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);margin-bottom:24px}
+.ach{list-style:none;margin:0;padding:0}
+.ach li{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ach time{font:700 1rem "Bricolage Grotesque",sans-serif;color:var(--pink)}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.gal div{aspect-ratio:4/3;border-radius:8px;background-size:cover;background-position:center}
+.cta{background:var(--teal);color:var(--teal-ink);text-align:center}
+.cta .btn{background:var(--teal-ink);color:var(--teal);border-color:var(--teal-ink)}
+.cta .btn.alt{background:transparent;color:var(--teal-ink)}
+.cta .intro{margin-left:auto;margin-right:auto;color:inherit}
+footer{padding:40px 0 calc(48px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.93rem;border-top:1px solid var(--line)}
+footer .grid{margin-bottom:24px}
+footer h3{font-size:1rem;color:var(--ink);margin-bottom:8px}
+@media (max-width:760px){
+ .panels{flex-direction:column;height:auto}
+ .panel{flex:none;height:90px;transition:height .4s}
+ .panel:hover,.panel:focus-visible{flex:none}
+ .panel.open{height:260px}
+ .ach li{grid-template-columns:1fr;gap:2px}
+ .hero .btn.alt{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><span class="tile">Ac</span>ACS Student Chapter, JUST</a>
+  <nav aria-label="Main"><a href="#about">About</a><a href="#events">Events</a><a href="#committee">Committee</a><a href="#advisors">Advisors</a><a href="#achievements">Achievements</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></nav>
+  <a class="btn" href="#join">Become a member</a>
+</div></header>
+
+<main id="top">
+<div class="hero" id="heroBox">
+  <div class="wrap">
+    <h1>Chemistry, done together.</h1>
+    <p>The American Chemical Society Student Chapter at Jashore University of Science and Technology.</p>
+    <a class="btn" href="#events">Explore events</a><a class="btn alt" href="#join">Join the chapter</a>
+  </div>
+</div>
+
+<section id="about"><div class="wrap">
+  <h2>Who we are</h2>
+  <p class="intro" id="aboutText"></p>
+  <div class="stats" id="stats"></div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <h2>Our flagship events</h2>
+  <p class="intro">Hover a panel to open it. On a phone, tap a panel.</p>
+  <div class="panels" id="panels"></div>
+</div></section>
+
+<section id="committee"><div class="wrap">
+  <h2>Executive body</h2>
+  <label for="session" class="intro" style="display:block;margin-bottom:8px">Session</label>
+  <select id="session"></select>
+  <div class="grid" id="people"></div>
+</div></section>
+
+<section id="advisors"><div class="wrap">
+  <h2>Advisors</h2>
+  <div class="grid" id="advList" style="margin-top:24px"></div>
+</div></section>
+
+<section id="achievements"><div class="wrap">
+  <h2>Achievements</h2>
+  <ul class="ach" id="achList"></ul>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <h2>Gallery</h2>
+  <div class="gal" id="galList" style="margin-top:24px"></div>
+</div></section>
+
+<section class="cta" id="join"><div class="wrap">
+  <h2>Find your people in chemistry.</h2>
+  <p class="intro">Workshops, seminars, outreach and a community that loves the subject. Joining takes a few minutes.</p>
+  <a class="btn" id="joinBtn" href="#contact">Become a member</a>
+  <a class="btn alt" href="#contact">Ask us anything</a>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="grid">
+    <div><h3>ACS Student Chapter, JUST</h3><p>Jashore University of Science and Technology, Jashore, Bangladesh.</p></div>
+    <div><h3>Explore</h3><a href="#events">Events</a><br><a href="#committee">Committee</a><br><a href="#gallery">Gallery</a></div>
+    <div><h3>Reach us</h3><span id="loc"></span><br><a id="mail"></a><br><a id="fb" target="_blank" rel="noopener">Facebook</a></div>
+  </div>
+  <div id="year"></div>
+</div></footer>
+
+<script>
+/* ===== EDIT THIS SECTION ONLY ===== */
+var CONFIG = {
+  about: "We are students of JUST who love chemistry and want to learn more than the syllabus covers. Our chapter runs workshops, seminars and outreach events, and connects members with the wider ACS community.",
+  email: "acs.just@example.com",
+  facebook: "https://www.facebook.com/",
+  location: "Department of Chemistry, JUST",
+  joinLink: "",  /* paste your Google Form link here */
+  stats: [[60,"Active members"],[12,"Workshops"],[8,"Seminars"],[5,"Outreach events"]],
+  /* img: paste a photo URL, or leave "" to use a color */
+  slides: [{img:"",c:"#0B7C7C"},{img:"",c:"#123B5C"},{img:"",c:"#7A2E5C"}],
+  events: [
+    {name:"Welcome Session", text:"Meet the executive panel and learn how the chapter works.", img:""},
+    {name:"Lab Safety Workshop", text:"Hands-on training in safe lab practice and research basics.", img:""},
+    {name:"Chemistry Olympiad Prep", text:"Problem-solving groups and practice sessions.", img:""},
+    {name:"School Science Fair", text:"Safe, simple experiments for local school students.", img:""},
+    {name:"Research Talks", text:"Faculty and students present current work.", img:""}
+  ],
+  sessions: {
+    "2025-26": [["President name","President",""],["Vice president name","Vice President",""],["Secretary name","General Secretary",""],["Treasurer name","Treasurer",""]],
+    "2024-25": [["Name","President",""],["Name","General Secretary",""]]
+  },
+  advisors: [["Advisor name","Professor, Dept. of Chemistry",""],["Advisor name","Lecturer, Dept. of Chemistry",""]],
+  achievements: [["2026","Add an award or recognition here."],["2025","Add a competition result here."]],
+  gallery: ["","","","","",""]
+};
+/* ===== END EDIT SECTION ===== */
+
+var $=function(id){return document.getElementById(id)};
+function bg(el,img,fallback){el.style.backgroundImage=img?'url("'+img+'")':'none';if(!img)el.style.backgroundColor=fallback}
+function hue(i){return "hsl("+(170+i*28)+",45%,32%)"}
+function initials(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("").toUpperCase()}
+
+$("aboutText").textContent=CONFIG.about;
+$("mail").textContent=CONFIG.email;$("mail").href="mailto:"+CONFIG.email;
+$("fb").href=CONFIG.facebook;$("loc").textContent=CONFIG.location;
+$("year").textContent="© "+new Date().getFullYear()+" ACS Student Chapter, JUST";
+if(CONFIG.joinLink){$("joinBtn").href=CONFIG.joinLink;$("joinBtn").target="_blank";$("joinBtn").rel="noopener"}
+
+/* hero slideshow */
+var slides=CONFIG.slides.map(function(s){var d=document.createElement("div");d.className="slide";bg(d,s.img,s.c);$("heroBox").insertBefore(d,$("heroBox").firstChild);return d});
+var cur=0;slides[0].classList.add("on");
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&slides.length>1){
+  setInterval(function(){slides[cur].classList.remove("on");cur=(cur+1)%slides.length;slides[cur].classList.add("on")},5000)}
+
+/* stats with count-up */
+CONFIG.stats.forEach(function(s){
+  var d=document.createElement("div");d.className="stat";
+  d.innerHTML='<b data-n="'+s[0]+'">0</b><span></span>';d.lastChild.textContent=s[1];$("stats").appendChild(d)});
+var counted=false;
+function count(){
+  if(counted)return;counted=true;
+  document.querySelectorAll("[data-n]").forEach(function(b){
+    var n=+b.dataset.n,t=0,step=Math.max(1,Math.ceil(n/40));
+    var id=setInterval(function(){t=Math.min(n,t+step);b.textContent=t+"+";if(t>=n)clearInterval(id)},30)})}
+if("IntersectionObserver" in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){count();o.disconnect()}}).observe($("stats"))}else count();
+
+/* event panels */
+CONFIG.events.forEach(function(ev,i){
+  var p=document.createElement("div");p.className="panel";p.tabIndex=0;bg(p,ev.img,hue(i));
+  p.innerHTML='<div class="in"><h3></h3><div class="more"></div></div>';
+  p.querySelector("h3").textContent=ev.name;p.querySelector(".more").textContent=ev.text;
+  p.addEventListener("click",function(){var o=p.classList.contains("open");document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")});
+  p.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p.click()}});
+  $("panels").appendChild(p)});
+
+/* people cards */
+function card(list,target){
+  target.innerHTML="";
+  list.forEach(function(p){
+    var c=document.createElement("div");c.className="card";
+    c.innerHTML='<div class="avatar"></div><h3></h3><p></p>';
+    var a=c.querySelector(".avatar");if(p[2])a.style.backgroundImage='url("'+p[2]+'")';else a.textContent=initials(p[0]);
+    c.querySelector("h3").textContent=p[0];c.querySelector("p").textContent=p[1];target.appendChild(c)})}
+var sel=$("session");
+Object.keys(CONFIG.sessions).forEach(function(k,i){var o=document.createElement("option");o.value=k;o.textContent=k+(i===0?" (current)":"");sel.appendChild(o)});
+function showSession(){card(CONFIG.sessions[sel.value],$("people"))}
+sel.addEventListener("change",showSession);showSession();
+card(CONFIG.advisors,$("advList"));
+
+/* achievements and gallery */
+CONFIG.achievements.forEach(function(a){var li=document.createElement("li");li.innerHTML="<time></time><span></span>";li.firstChild.textContent=a[0];li.lastChild.textContent=a[1];$("achList").appendChild(li)});
+CONFIG.gallery.forEach(function(g,i){var d=document.createElement("div");d.setAttribute("role","img");d.setAttribute("aria-label","Chapter photo "+(i+1));bg(d,g,hue(i+2));$("galList").appendChild(d)});
+</script>
+</body>
+</html>
